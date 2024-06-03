@@ -6,12 +6,24 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\LoginRequest;
 use App\Http\Requests\SignupRequest;
 use App\Models\User;
+use Exception;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use Tymon\JWTAuth\Facades\JWTAuth;
 
 class AuthController extends Controller
 {
+    public function login(LoginRequest $request)
+    {
+        $credentials = $request->validated();
+        if (!$token = Auth::attempt($credentials)) {
+            return response()->json(['error' => 'Unauthorized'], 401);
+        }
+
+        $user = Auth::user();
+        return response()->json(compact('user', 'token'));
+    }
+
     public function signup(SignupRequest $request)
     {
         $data = $request->validated();
@@ -25,22 +37,17 @@ class AuthController extends Controller
         return response()->json(compact('user', 'token'));
     }
 
-    public function login(LoginRequest $request)
-    {
-        $credentials = $request->validated();
-        if (!$token = Auth::attempt($credentials)) {
-            return response()->json(['error' => 'Unauthorized'], 401);
-        }
-
-        $user = Auth::user();
-        return response()->json(compact('user', 'token'));
-    }
 
     public function logout()
     {
-        Auth::logout();
-        return response()->json(['message' => 'Successfully logged out']);
+        try {
+            JWTAuth::invalidate(JWTAuth::getToken());
+            return response()->json(['message' => 'Successfully logged out']);
+        } catch (Exception $e) {
+            return response()->json(['error' => 'Something went wrong'], 500);
+        }
     }
+
 
     public function refresh()
     {
