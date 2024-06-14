@@ -16,11 +16,11 @@ class AuthController extends Controller
     public function login(LoginRequest $request)
     {
         $credentials = $request->validated();
-        if (!$token = Auth::attempt($credentials)) {
+        if (!$token = JWTAuth::attempt($credentials)) {
             return response()->json(['error' => 'Unauthorized'], 401);
         }
 
-        $user = Auth::user();
+        $user = JWTAuth::user();
         return response()->json(compact('user', 'token'));
     }
 
@@ -51,6 +51,6 @@ class AuthController extends Controller
 
     public function refresh()
     {
-        return response()->json(['token' => Auth::refresh()]);
+        return response()->json(['token' => JWTAuth::refresh()]);
     }
 }
