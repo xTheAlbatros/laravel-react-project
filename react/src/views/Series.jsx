@@ -5,35 +5,24 @@ import {useStateContext} from "../context/ContextProvider.jsx";
 
 export default function Series() {
     const [series, setSeries] = useState([]);
-    const [loading, setLoading] = useState(false);
-    const {setNotification} = useStateContext()
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        getSeries();
-    }, [])
+        fetchSeries();
+    }, []);
 
-    const onDeleteClick = series => {
-        if (!window.confirm("Are you sure you want to delete this series?")) {
-            return
-        }
-        axiosClient.delete(`/series/${series.id}`)
-            .then(() => {
-                setNotification('Series was successfully deleted')
-                getSeries()
-            })
-    }
-
-    const getSeries = () => {
-        setLoading(true)
+    const fetchSeries = () => {
+        setLoading(true);
         axiosClient.get('/series')
             .then(({ data }) => {
-                setLoading(false)
-                setSeries(data.data)
+                setLoading(false);
+                setSeries(data.data);
             })
-            .catch(() => {
-                setLoading(false)
-            })
-    }
+            .catch(error => {
+                console.error('Error fetching series:', error);
+                setLoading(false);
+            });
+    };
 
     return (
         <div>

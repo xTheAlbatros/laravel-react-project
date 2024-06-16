@@ -1,11 +1,33 @@
-import { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import axiosClient from "./axios-client.js";
 import './bootstrap.min.css'
 import './dashboard.css'
 import { Splide, SplideSlide } from '@splidejs/react-splide';
 import '@splidejs/react-splide/css';
+import { Link } from 'react-router-dom';
+
 
 
 function Dashboard() {
+    const [series, setSeries] = useState([]);
+    const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+        fetchSeries();
+    }, []);
+
+    const fetchSeries = () => {
+        setLoading(true);
+        axiosClient.get('/series')
+            .then(({ data }) => {
+                setLoading(false);
+                setSeries(data.data);
+            })
+            .catch(error => {
+                console.error('Error fetching series:', error);
+                setLoading(false);
+            });
+    };
 
     return (
         <div>
@@ -100,7 +122,9 @@ function Dashboard() {
                     <div className="row">
                         <div className="col-lg-6 offset-lg-3">
                             <div className="section-heading text-center">
-                                <h2>Wybierz swój ulubiony serial!</h2>
+                                <h2>
+                                    <Link to="/users">Wybierz swój ulubiony serial!</Link>
+                                </h2>
                             </div>
                         </div>
                     </div>
@@ -108,50 +132,27 @@ function Dashboard() {
             </div>
 
             <div className="row gx-0 justify-content-center slajder-bottom">
-            <Splide options={
-                {
-                    type   : 'loop',
-                    perPage: 3,
-                    focus  : 'center',
-                    width : 1200,
-                    autoplay: true,
-                    start: 0,
-                    speed: 3000,
-                }
-            } aria-label="Series Images">
-                <SplideSlide>
-                    <img src="/src/assets/series/slajder_1.jpg" alt="The Mandalorian"/>
-                    <div className="slide-caption">The Mandalorian</div>
-                </SplideSlide>
-                <SplideSlide>
-                    <img src="/src/assets/series/slajder_2.jpg" alt="Obi-Wan Kenobi"/>
-                    <div className="slide-caption">Obi-Wan Kenobi</div>
-                </SplideSlide>
-                <SplideSlide>
-                    <img src="/src/assets/series/slajder_3.jpg" alt="Obi-Wan Kenobi"/>
-                    <div className="slide-caption">Obi-Wan Kenobi</div>
-                </SplideSlide>
-                <SplideSlide>
-                    <img src="/src/assets/series/slajder_4.jpg" alt="Obi-Wan Kenobi"/>
-                    <div className="slide-caption">Obi-Wan Kenobi</div>
-                </SplideSlide>
-                <SplideSlide>
-                    <img src="/src/assets/series/slajder_5.jpg" alt="Obi-Wan Kenobi"/>
-                    <div className="slide-caption">Obi-Wan Kenobi</div>
-                </SplideSlide>
-                <SplideSlide>
-                    <img src="/src/assets/series/slajder_6.jpg" alt="Obi-Wan Kenobi"/>
-                    <div className="slide-caption">Obi-Wan Kenobi</div>
-                </SplideSlide>
-                <SplideSlide>
-                    <img src="/src/assets/series/slajder_7.jpg" alt="Obi-Wan Kenobi"/>
-                    <div className="slide-caption">Obi-Wan Kenobi</div>
-                </SplideSlide>
-                <SplideSlide>
-                    <img src="/src/assets/series/slajder_8.jpg" alt="Obi-Wan Kenobi"/>
-                    <div className="slide-caption">Obi-Wan Kenobi</div>
-                </SplideSlide>
-            </Splide>
+                <div className="row gx-0 justify-content-center slajder-bottom">
+                    <Splide
+                        options={{
+                            type: 'loop',
+                            perPage: 3,
+                            focus: 'center',
+                            width: 1200,
+                            autoplay: true,
+                            start: 0,
+                            speed: 3000,
+                        }}
+                        aria-label="Series Images"
+                    >
+                        {series.map(serie => (
+                            <SplideSlide key={serie.id}>
+                                <img src={serie.path} alt={serie.name} />
+                                <div className="slide-caption">{serie.name}</div>
+                            </SplideSlide>
+                        ))}
+                    </Splide>
+                </div>
             </div>
         </div>
     );
