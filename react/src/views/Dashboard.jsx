@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import axiosClient from "./axios-client.js";
-import './bootstrap.min.css'
-import './dashboard.css'
+import axiosClient from "../axios-client.js";
+import '../css/bootstrap.min.css'
+import '../css/dashboard.css'
 import { Splide, SplideSlide } from '@splidejs/react-splide';
 import '@splidejs/react-splide/css';
 import { Link } from 'react-router-dom';

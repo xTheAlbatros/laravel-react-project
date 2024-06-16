@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axiosClient from "../axios-client.js";
 import { useStateContext } from "../context/ContextProvider.jsx";
-import '../info.css'
+import '../css/info.css'
 
 export default function Info() {
     const [usersWithSeries, setUsersWithSeries] = useState([]);
