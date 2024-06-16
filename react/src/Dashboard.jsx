@@ -6,16 +6,6 @@ import '@splidejs/react-splide/css';
 
 
 function Dashboard() {
-    // Przykład użycia useState, jeśli potrzebujesz lokalnego stanu
-    const [count, setCount] = useState(0);
-
-    var splide = new Splide( '.splide', {
-        type   : 'loop',
-        perPage: 3,
-        focus  : 'center',
-    } );
-
-    //splide.mount();
 
     return (
         <div>
@@ -130,35 +120,35 @@ function Dashboard() {
                 }
             } aria-label="Series Images">
                 <SplideSlide>
-                    <img src="/src/assets/images/slajder_1.jpg" alt="The Mandalorian"/>
+                    <img src="/src/assets/series/slajder_1.jpg" alt="The Mandalorian"/>
                     <div className="slide-caption">The Mandalorian</div>
                 </SplideSlide>
                 <SplideSlide>
-                    <img src="/src/assets/images/slajder_2.jpg" alt="Obi-Wan Kenobi"/>
+                    <img src="/src/assets/series/slajder_2.jpg" alt="Obi-Wan Kenobi"/>
                     <div className="slide-caption">Obi-Wan Kenobi</div>
                 </SplideSlide>
                 <SplideSlide>
-                    <img src="/src/assets/images/slajder_3.jpg" alt="Obi-Wan Kenobi"/>
+                    <img src="/src/assets/series/slajder_3.jpg" alt="Obi-Wan Kenobi"/>
                     <div className="slide-caption">Obi-Wan Kenobi</div>
                 </SplideSlide>
                 <SplideSlide>
-                    <img src="/src/assets/images/slajder_4.jpg" alt="Obi-Wan Kenobi"/>
+                    <img src="/src/assets/series/slajder_4.jpg" alt="Obi-Wan Kenobi"/>
                     <div className="slide-caption">Obi-Wan Kenobi</div>
                 </SplideSlide>
                 <SplideSlide>
-                    <img src="/src/assets/images/slajder_5.jpg" alt="Obi-Wan Kenobi"/>
+                    <img src="/src/assets/series/slajder_5.jpg" alt="Obi-Wan Kenobi"/>
                     <div className="slide-caption">Obi-Wan Kenobi</div>
                 </SplideSlide>
                 <SplideSlide>
-                    <img src="/src/assets/images/slajder_6.jpg" alt="Obi-Wan Kenobi"/>
+                    <img src="/src/assets/series/slajder_6.jpg" alt="Obi-Wan Kenobi"/>
                     <div className="slide-caption">Obi-Wan Kenobi</div>
                 </SplideSlide>
                 <SplideSlide>
-                    <img src="/src/assets/images/slajder_7.jpg" alt="Obi-Wan Kenobi"/>
+                    <img src="/src/assets/series/slajder_7.jpg" alt="Obi-Wan Kenobi"/>
                     <div className="slide-caption">Obi-Wan Kenobi</div>
                 </SplideSlide>
                 <SplideSlide>
-                    <img src="/src/assets/images/slajder_8.jpg" alt="Obi-Wan Kenobi"/>
+                    <img src="/src/assets/series/slajder_8.jpg" alt="Obi-Wan Kenobi"/>
                     <div className="slide-caption">Obi-Wan Kenobi</div>
                 </SplideSlide>
             </Splide>

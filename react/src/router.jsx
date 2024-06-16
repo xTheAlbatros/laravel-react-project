@@ -9,6 +9,7 @@ import Users from "./views/Users";
 import UserForm from "./views/UserForm";
 import Series from "./views/Series";
 import SeriesForm from "./views/SeriesForm";
+import Info from "./views/Info.jsx";
 
 const router = createBrowserRouter([
   {
@@ -17,11 +18,15 @@ const router = createBrowserRouter([
     children: [
       {
         path: '/',
-        element: <Navigate to="/users"/>
+        element: <Navigate to="/dashboard"/>
       },
       {
         path: '/dashboard',
         element: <Dashboard/>
+      },
+      {
+        path: '/info',
+        element: <Info/>
       },
       {
         path: '/users',

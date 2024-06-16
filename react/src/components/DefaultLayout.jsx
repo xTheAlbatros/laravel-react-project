@@ -30,14 +30,15 @@ export default function DefaultLayout() {
   return (
       <div id="defaultLayout">
         <aside>
-          <Link to="/dashboard">Dashboard</Link>
+          <Link to="/dashboard">Home</Link>
+            <Link to="/info">Info</Link>
           <Link to="/users">Users</Link>
           <Link to="/series">Series</Link>
         </aside>
         <div className="content">
           <header>
             <div>
-              Header
+                <img src="/src/assets/images/logo.png" alt="logo"/>
             </div>
 
             <div>
