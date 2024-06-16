@@ -7,6 +7,8 @@ import NotFound from "./views/NotFound";
 import Signup from "./views/Signup";
 import Users from "./views/Users";
 import UserForm from "./views/UserForm";
+import Series from "./views/Series";
+import SeriesForm from "./views/SeriesForm";
 
 const router = createBrowserRouter([
   {
@@ -32,6 +34,18 @@ const router = createBrowserRouter([
       {
         path: '/users/:id',
         element: <UserForm key="userUpdate" />
+      },
+      {
+        path: '/series',
+        element: <Series/>
+      },
+      {
+        path: '/series/new',
+        element: <SeriesForm key="seriesCreate" />
+      },
+      {
+        path: '/series/:id',
+        element: <SeriesForm key="seriesUpdate" />
       }
     ]
   },

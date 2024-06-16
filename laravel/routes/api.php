@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\UserController;
+use App\Http\Controllers\Api\SeriesController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -22,8 +23,10 @@ Route::group(['middleware' => 'auth.jwt'], function () {
         return $request->user();
     });
     Route::apiResource('/users', UserController::class);
+    Route::apiResource('/series', SeriesController::class)->except(['store']);
 });
 
 Route::post('/signup', [AuthController::class, 'signup']);
 Route::post('/login', [AuthController::class, 'login']);
 
+Route::post('/series', [SeriesController::class, 'store']);
