@@ -1,11 +1,11 @@
-import {useNavigate, useParams} from "react-router-dom";
-import {useEffect, useState} from "react";
+import { useNavigate, useParams } from "react-router-dom";
+import { useEffect, useState } from "react";
 import axiosClient from "../axios-client.js";
-import {useStateContext} from "../context/ContextProvider.jsx";
+import { useStateContext } from "../context/ContextProvider.jsx";
 
 export default function SeriesForm() {
     const navigate = useNavigate();
-    let {id} = useParams();
+    let { id } = useParams();
     const [series, setSeries] = useState({
         id: null,
         name: '',
@@ -13,53 +13,61 @@ export default function SeriesForm() {
         end_year: '',
         genre: '',
         path: ''
-    })
-    const [errors, setErrors] = useState(null)
-    const [loading, setLoading] = useState(false)
-    const {setNotification} = useStateContext()
+    });
+    const [errors, setErrors] = useState(null);
+    const [loading, setLoading] = useState(false);
+    const { setNotification } = useStateContext();
 
-    if (id) {
-        useEffect(() => {
-            setLoading(true)
+    useEffect(() => {
+        if (id) {
+            setLoading(true);
             axiosClient.get(`/series/${id}`)
-                .then(({data}) => {
-                    setLoading(false)
-                    setSeries(data)
+                .then(({ data }) => {
+                    setLoading(false);
+                    setSeries(data);
                 })
                 .catch(() => {
-                    setLoading(false)
-                })
-        }, [])
-    }
+                    setLoading(false);
+                });
+        }
+    }, [id]);
 
-    const onSubmit = ev => {
-        ev.preventDefault()
+    const handleFileChange = (ev) => {
+        const file = ev.target.files[0];
+        if (file) {
+            const filePath = `/src/assets/series/${file.name}`;
+            setSeries({ ...series, path: filePath });
+        }
+    };
+
+    const onSubmit = (ev) => {
+        ev.preventDefault();
         if (series.id) {
             axiosClient.put(`/series/${series.id}`, series)
                 .then(() => {
-                    setNotification('Series was successfully updated')
-                    navigate('/series')
+                    setNotification('Series was successfully updated');
+                    navigate('/series');
                 })
                 .catch(err => {
                     const response = err.response;
                     if (response && response.status === 422) {
-                        setErrors(response.data.errors)
+                        setErrors(response.data.errors);
                     }
-                })
+                });
         } else {
             axiosClient.post('/series', series)
                 .then(() => {
-                    setNotification('Series was successfully created')
-                    navigate('/series')
+                    setNotification('Series was successfully created');
+                    navigate('/series');
                 })
                 .catch(err => {
                     const response = err.response;
                     if (response && response.status === 422) {
-                        setErrors(response.data.errors)
+                        setErrors(response.data.errors);
                     }
-                })
+                });
         }
-    }
+    };
 
     return (
         <>
@@ -71,24 +79,43 @@ export default function SeriesForm() {
                         Loading...
                     </div>
                 )}
-                {errors &&
+                {errors && (
                     <div className="alert">
                         {Object.keys(errors).map(key => (
                             <p key={key}>{errors[key][0]}</p>
                         ))}
                     </div>
-                }
+                )}
                 {!loading && (
                     <form onSubmit={onSubmit}>
-                        <input value={series.name} onChange={ev => setSeries({...series, name: ev.target.value})} placeholder="Name"/>
-                        <input value={series.start_year} onChange={ev => setSeries({...series, start_year: ev.target.value})} placeholder="Start Year"/>
-                        <input value={series.end_year} onChange={ev => setSeries({...series, end_year: ev.target.value})} placeholder="End Year"/>
-                        <input value={series.genre} onChange={ev => setSeries({...series, genre: ev.target.value})} placeholder="Genre"/>
-                        <input value={series.path} onChange={ev => setSeries({...series, path: ev.target.value})} placeholder="Path"/>
+                        <input
+                            value={series.name}
+                            onChange={ev => setSeries({ ...series, name: ev.target.value })}
+                            placeholder="Name"
+                        />
+                        <input
+                            value={series.start_year}
+                            onChange={ev => setSeries({ ...series, start_year: ev.target.value })}
+                            placeholder="Start Year"
+                        />
+                        <input
+                            value={series.end_year}
+                            onChange={ev => setSeries({ ...series, end_year: ev.target.value })}
+                            placeholder="End Year"
+                        />
+                        <input
+                            value={series.genre}
+                            onChange={ev => setSeries({ ...series, genre: ev.target.value })}
+                            placeholder="Genre"
+                        />
+                        <input
+                            type="file"
+                            onChange={handleFileChange}
+                        />
                         <button className="btn">Save</button>
                     </form>
                 )}
             </div>
         </>
-    )
+    );
 }

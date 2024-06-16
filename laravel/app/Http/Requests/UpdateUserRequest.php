@@ -32,7 +32,8 @@ class UpdateUserRequest extends FormRequest
                 Password::min(8)
                     ->letters()
                     ->symbols(),
-            ]
+            ],
+            'series_id' => 'required|exists:series,id'
         ];
     }
 }
