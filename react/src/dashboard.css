@@ -1,0 +1,327 @@
+/*
+---------------------------------------------
+Dashboard
+---------------------------------------------
+*/
+.weekly-offers {
+    margin-top: 120px;
+    border-bottom: 1px solid #eee;
+}
+
+.weekly-offers .container-fluid {
+    padding: 0px 80px;
+}
+
+.weekly-offers .item {
+    margin: 0px 15px;
+    position: relative;
+    min-height: 420px;
+}
+
+.weekly-offers .item .thumb img {
+    padding-right: 160px;
+    border-radius: 23px;
+}
+
+.weekly-offers .item .thumb .text {
+    position: absolute;
+    background-color: #fff;
+    border-radius: 23px;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    box-shadow: 0px 0px 15px rgba(0,0,0,0.15);
+    padding: 30px;
+}
+
+.weekly-offers .item .thumb .text h4 {
+    font-size: 20px;
+    display: inline-block;
+}
+
+.weekly-offers .item .thumb .text h6 {
+    display: inline-block;
+    float: right;
+    text-align: right;
+    font-size: 20px;
+    color: #6e071b;
+}
+
+.weekly-offers .item .thumb .text h4 span,
+.weekly-offers .item .thumb .text h6 span {
+    font-size: 15px;
+    color: #afafaf;
+    font-weight: 400;
+}
+
+.weekly-offers .item .thumb .text ul {
+    border-top: 1px solid #eee;
+    margin-top: 25px;
+    padding-top: 25px;
+}
+
+.weekly-offers .item .thumb .text ul li {
+    color: #afafaf;
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+.weekly-offers .item .thumb .text ul li:first-child {
+    color: #cc0e34;
+    font-weight: 600;
+}
+
+.weekly-offers .item .thumb .text .main-button {
+    margin-top: 30px;
+}
+
+.weekly-offers .item .thumb .text .main-button a:hover {
+    background-color: #6e071b;
+    border-color: #6e071b;
+    color: #fff;
+    opacity: 0.85;
+}
+
+.weekly-offers .owl-nav {
+    text-align: center;
+    margin-top: 30px;
+}
+
+.weekly-offers .owl-nav .owl-next span {
+    display: none;
+}
+
+.weekly-offers .owl-nav .owl-next::after {
+    font-family: "FontAwesome";
+    content: '\f061';
+    color: #6e071b;
+    font-size: 20px;
+    width: 46px;
+    height: 46px;
+    text-align: center;
+    border: 1px solid #6e071b;
+    display: inline-block;
+    line-height: 44px;
+    border-radius: 50%;
+    transition: all .3s;
+    margin-left: 5px;
+}
+
+.weekly-offers .owl-nav .owl-prev span {
+    display: none;
+}
+
+.weekly-offers .owl-nav .owl-prev::after {
+    font-family: "FontAwesome";
+    content: '\f060';
+    color: #6e071b;
+    font-size: 20px;
+    width: 46px;
+    height: 46px;
+    text-align: center;
+    border: 1px solid #6e071b;
+    display: inline-block;
+    line-height: 44px;
+    border-radius: 50%;
+    transition: all .3s;
+    margin-right: 5px;
+}
+
+.weekly-offers .owl-nav .owl-prev:hover::after,
+.weekly-offers .owl-nav .owl-next:hover::after {
+    color: #fff;
+    background-color: #6e071b;
+}
+
+.section-heading {
+    position: relative;
+    z-index: 2;
+    margin-top: 0px;
+    margin-bottom: 80px;
+    text-align: left;
+}
+
+.section-heading h2 {
+    margin-top: 0px;
+    margin-bottom: 20px;
+    line-height: 36px;
+    font-size: 30px;
+    font-weight: 700;
+    text-transform: capitalize;
+    color: #cc0e34;
+}
+
+.more-about .section-heading {
+    margin-bottom: 40px;
+}
+
+
+.img-fluid {
+    max-width: 100%;
+    height: auto;
+}
+
+.bg-black {
+    --bs-bg-opacity: 1;
+    background-color: rgba(var(--bs-black-rgb), var(--bs-bg-opacity)) !important;
+}
+
+.h-100 {
+    height: 100% !important;
+}
+.d-flex {
+    display: flex !important;
+}
+
+.projects-section {
+    border-bottom: 1px solid #eee;
+    padding-bottom: 120px;
+}
+
+.projects-section .featured-text {
+    padding: 2rem;
+}
+@media (min-width: 992px) {
+    .projects-section .featured-text {
+        padding: 0 0 0 2rem;
+        border-left: 0.5rem solid #cc0e34;
+    }
+}
+.projects-section .project-text {
+    padding: 3rem;
+    font-size: 90%;
+}
+@media (min-width: 992px) {
+    .projects-section .project-text {
+        padding: 5rem;
+    }
+}
+
+a {
+    color: #6e071b;
+    text-decoration: none !important;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    margin-top: 0px;
+    margin-bottom: 0px;
+    color: #cc0e34;
+    font-weight: 700;
+}
+
+ul {
+    margin-bottom: 0px;
+}
+
+p {
+    font-size: 15px;
+    line-height: 30px;
+    color: #afafaf;
+}
+
+img {
+    width: 100%;
+    overflow: hidden;
+}
+
+/*
+---------------------------------------------
+Global Styles
+---------------------------------------------
+*/
+html,
+body {
+    background: #241f20;
+    font-family: 'Poppins', sans-serif;
+}
+
+::selection {
+    background: #6e071b;
+    color: #fff;
+}
+
+::-moz-selection {
+    background: #6e071b;
+    color: #fff;
+}
+
+.text-button a {
+    font-size: 14px;
+    color: #6e071b;
+    font-weight: 500;
+    transition: all .3s;
+}
+
+.text-button a i {
+    margin-left: 5px;
+    transition: all .3s;
+}
+
+.text-button a:hover i {
+    margin-left: 10px;
+}
+
+.border-button a {
+    font-size: 14px;
+    color: #6e071b;
+    background-color: transparent;
+    border: 1px solid #6e071b;
+    padding: 12px 30px;
+    display: inline-block;
+    border-radius: 25px;
+    font-weight: 500;
+    text-transform: capitalize;
+    letter-spacing: 0.5px;
+    transition: all .3s;
+    position: relative;
+    overflow: hidden;
+}
+
+.border-button a:hover {
+    background-color: #6e071b;
+    color: #fff;
+}
+
+.main-button a {
+    font-size: 14px;
+    color: #fff;
+    background-color: #6e071b;
+    border: 1px solid #6e071b;
+    padding: 12px 30px;
+    display: inline-block;
+    border-radius: 25px;
+    font-weight: 500;
+    text-transform: capitalize;
+    letter-spacing: 0.5px;
+    transition: all .3s;
+    position: relative;
+    overflow: hidden;
+}
+
+.main-button a:hover {
+    background-color: #fff;
+    color: #6e071b;
+    border: 1px solid #fff;
+}
+
+section {
+    margin-top: 120px;
+}
+
+.section-heading {
+    position: relative;
+    z-index: 2;
+    margin-top: 0px;
+    margin-bottom: 80px;
+    text-align: left;
+}
+
+.section-heading h2 {
+    margin-top: 0px;
+    margin-bottom: 20px;
+    line-height: 36px;
+    font-size: 30px;
+    font-weight: 700;
+    text-transform: capitalize;
+    color: #cc0e34;
+}
