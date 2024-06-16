@@ -325,3 +325,32 @@ section {
     text-transform: capitalize;
     color: #cc0e34;
 }
+
+/*
+---------------------------------------------
+Slajder
+---------------------------------------------
+*/
+
+.slajder {
+    margin-top: 120px;
+}
+.slajder-bottom {
+    margin-bottom: 80px;
+}
+
+.slide-content {
+    position: relative;
+}
+
+.slide-caption {
+    position: absolute;
+    bottom: 20px;
+    left: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    padding: 5px;
+    text-align: center;
+    font-size: 16px;
+}

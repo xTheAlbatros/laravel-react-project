@@ -1,14 +1,25 @@
 import { useState } from 'react';
 import './bootstrap.min.css'
 import './dashboard.css'
+import { Splide, SplideSlide } from '@splidejs/react-splide';
+import '@splidejs/react-splide/css';
+
 
 function Dashboard() {
     // Przykład użycia useState, jeśli potrzebujesz lokalnego stanu
     const [count, setCount] = useState(0);
 
+    var splide = new Splide( '.splide', {
+        type   : 'loop',
+        perPage: 3,
+        focus  : 'center',
+    } );
+
+    //splide.mount();
+
     return (
         <div>
-            {/* Sekcja "Tekst pod slajderem" */}
+            {/* dahsboard */}
             <div class="weekly-offers">
                 <div class="container">
                     <div class="row">
@@ -93,6 +104,65 @@ function Dashboard() {
                     </div>
                 </div>
             </section>
+
+            <div className="slajder">
+                <div className="container">
+                    <div className="row">
+                        <div className="col-lg-6 offset-lg-3">
+                            <div className="section-heading text-center">
+                                <h2>Wybierz swój ulubiony serial!</h2>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div className="row gx-0 justify-content-center slajder-bottom">
+            <Splide options={
+                {
+                    type   : 'loop',
+                    perPage: 3,
+                    focus  : 'center',
+                    width : 1200,
+                    autoplay: true,
+                    start: 0,
+                    speed: 3000,
+                }
+            } aria-label="Series Images">
+                <SplideSlide>
+                    <img src="/src/assets/images/slajder_1.jpg" alt="The Mandalorian"/>
+                    <div className="slide-caption">The Mandalorian</div>
+                </SplideSlide>
+                <SplideSlide>
+                    <img src="/src/assets/images/slajder_2.jpg" alt="Obi-Wan Kenobi"/>
+                    <div className="slide-caption">Obi-Wan Kenobi</div>
+                </SplideSlide>
+                <SplideSlide>
+                    <img src="/src/assets/images/slajder_3.jpg" alt="Obi-Wan Kenobi"/>
+                    <div className="slide-caption">Obi-Wan Kenobi</div>
+                </SplideSlide>
+                <SplideSlide>
+                    <img src="/src/assets/images/slajder_4.jpg" alt="Obi-Wan Kenobi"/>
+                    <div className="slide-caption">Obi-Wan Kenobi</div>
+                </SplideSlide>
+                <SplideSlide>
+                    <img src="/src/assets/images/slajder_5.jpg" alt="Obi-Wan Kenobi"/>
+                    <div className="slide-caption">Obi-Wan Kenobi</div>
+                </SplideSlide>
+                <SplideSlide>
+                    <img src="/src/assets/images/slajder_6.jpg" alt="Obi-Wan Kenobi"/>
+                    <div className="slide-caption">Obi-Wan Kenobi</div>
+                </SplideSlide>
+                <SplideSlide>
+                    <img src="/src/assets/images/slajder_7.jpg" alt="Obi-Wan Kenobi"/>
+                    <div className="slide-caption">Obi-Wan Kenobi</div>
+                </SplideSlide>
+                <SplideSlide>
+                    <img src="/src/assets/images/slajder_8.jpg" alt="Obi-Wan Kenobi"/>
+                    <div className="slide-caption">Obi-Wan Kenobi</div>
+                </SplideSlide>
+            </Splide>
+            </div>
         </div>
     );
 }
